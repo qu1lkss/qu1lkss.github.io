@@ -11,7 +11,7 @@
 <!-- Шапка тянется на всю ширину -->
 <header id="header">
     <div class="wrap">
-        <img class="logo" src="image.png" alt="Логотип" />
+        <img class="logo" src="img/image.png" alt="Логотип" />
         <h1 class="site-name">Мой сайт</h1>
     </div>
 </header>
@@ -40,8 +40,7 @@
         <!-- 3 Ссылка-изображение -->
         <li>
             <a href="https://kubsu.ru/" title="Открыть kubsu.ru">
-                <img alt="Баннер: Открыть kubsu.ru" width="560" height="180"
-                     src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='560' height='180'><rect width='100%25' height='100%25' fill='%23e8eefc'/><text x='50%25' y='50%25' font-size='28' font-family='Arial' text-anchor='middle' dominant-baseline='middle'>Открыть kubsu.ru</text></svg>">
+                <img src="img/banner.svg" alt="Баннер: Открыть kubsu.ru" width="560" height="180">
             </a>
         </li>
 
@@ -85,19 +84,18 @@
 
         <!-- 15 Кликабельные области на одном изображении (RECT + CIRCLE) -->
         <li>
-            Интерактивное изображение:
-            <br />
-            <img alt="Карта с зонами" usemap="#zones" width="460" height="220"
-                 src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='460' height='220'><rect width='100%25' height='100%25' fill='%23f4f4f5'/><rect x='10' y='10' width='200' height='100' fill='%23d6f3ff' stroke='%23000'/><circle cx='350' cy='110' r='55' fill='%23ffe1e1' stroke='%23000'/><text x='110' y='65' font-size='14' text-anchor='middle'>прямоугольник</text><text x='350' y='115' font-size='14' text-anchor='middle'>круг</text></svg>">
+            Интерактивное изображение:<br>
+            <img alt="Карта с зонами" usemap="#zones" width="460" height="220" src="img/map.svg">
             <map name="zones">
                 <area shape="rect"   coords="10,10,210,110"
                       href="https://www.example.com/rect"
-                      alt="Прямоугольная область — перейти" />
+                      alt="Прямоугольная область — перейти">
                 <area shape="circle" coords="350,110,55"
                       href="https://www.example.com/circle"
-                      alt="Круглая область — перейти" />
+                      alt="Круглая область — перейти">
             </map>
         </li>
+
 
         <!-- 16 Пустой href (перезагрузит текущую страницу) -->
         <li><a href="">Обновить текущую страницу</a></li>

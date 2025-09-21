@@ -1,0 +1,32 @@
+/* Базовые */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; line-height: 1.45; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 12px; }
+
+/* Шапка */
+#header { width: 100%; background: #d9d9d9; }
+#header .wrap { display: flex; align-items: center; gap: 16px; padding: 10px 0; }
+.logo { width: 100px; height: 100px; object-fit: cover; }
+.site-name { margin: 0; font-size: 24px; }
+
+/* Меню */
+#nav { width: 100%; background: #cfcfcf; }
+.menu { display: flex; gap: 24px; justify-content: center; padding: 10px 0; }
+.menu a { color: #000; text-decoration: none; }
+.menu a:hover { text-decoration: underline; }
+
+/* Контент */
+#content { padding: 20px 0; }
+#content h2 { margin-top: 0; }
+
+/* Таблица */
+.data-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+.data-table th,
+.data-table td { border: 1px solid #999; padding: 8px; text-align: left; }
+.data-table thead th { background: #eee; }
+.data-table tbody tr:nth-child(odd) { background: #fafafa; }
+.data-table tbody tr:nth-child(even) { background: #f0f0f0; }
+
+/* Подвал */
+#footer { width: 100%; background: #d9d9d9; }
+#footer .wrap { padding: 12px 0; text-align: center; font-size: 14px; }

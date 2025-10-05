@@ -1,0 +1,16 @@
+#root { min-height: 100vh; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 12px; }
+
+.logo { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; }
+
+.site-title { margin: 0; font-weight: 600; font-size: 22px; }
+
+.banner { width: 100%; max-width: 560px; height: auto; }
+.map-img { width: 460px; height: 220px; }
+.site-header { box-shadow: none; border-bottom: 0; }
+
+.logo { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; display: block; }
+@media (min-width: 768px) {
+    .logo { width: 80px; height: 80px; }
+    .site-title { font-size: 28px; }
+}

@@ -95,8 +95,9 @@ const languages = ['Pascal','C','C++','JavaScript','PHP','Python','Java','Haskel
 
 export default function App() {
     const [form] = Form.useForm()
-    
+
     const screens = Grid.useBreakpoint()
+    const isDesktop = screens.md // ++ добавлено: флаг ширины экрана
 
     const onFinish = (values) => console.log('Данные формы:', values)
 
@@ -113,12 +114,22 @@ export default function App() {
                                 <Col><h1 className="site-title">Мой сайт</h1></Col>
                             </Row>
                         </Col>
-                        
-                        <Col flex="auto" style={{ textAlign: 'center', marginTop: screens.md ? 0 : 8 }}>
+
+                        {/* !! изменено: центровку меняем на левую на мобиле и правую на десктопе */}
+                        {/* было: style={{ textAlign: 'center', marginTop: screens.md ? 0 : 8 }} */}
+                        <Col
+                            flex="auto"
+                            style={{ textAlign: isDesktop ? 'right' : 'left', marginTop: isDesktop ? 0 : 8 }} // !! изменено
+                        >
                             <Menu
-                                mode={screens.md ? 'horizontal' : 'inline'}
+                                mode={isDesktop ? 'horizontal' : 'inline'} // !! изменено
                                 selectable={false}
-                                style={{ border: 'none', background: 'transparent', display: 'inline-block' }}
+                                // !! изменено: на мобиле меню занимает всю ширину, на десктопе остаётся компактным
+                                style={{
+                                    border: 'none',
+                                    background: 'transparent',
+                                    ...(isDesktop ? { display: 'inline-block' } : { width: '100%' }) // !! изменено
+                                }}
                                 items={[
                                     { key: '1', label: <a href="#">Главная</a> },
                                     { key: '2', label: <a href="#">О сайте</a> },
@@ -150,6 +161,7 @@ export default function App() {
                             bordered
                             pagination={false}
                             aria-label="Пример таблицы"
+                            scroll={{ x: true }} // ++ добавлено: горизонтальный скролл на узких экранах
                         />
                     </Card>
 

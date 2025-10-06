@@ -14,23 +14,3 @@
     .logo { width: 80px; height: 80px; }
     .site-title { font-size: 28px; }
 }
-
-/* ++ добавлено: аккуратное мобильное поведение картинок карты  */
-@media (max-width: 767px) {
-    .map-img { width: 100% !important; height: auto !important; } /* ++ добавлено */
-}
-/* === мобильный порядок секций: таблица раньше списка === */
-.adaptive {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.block-table { order: 1; }   /* на телефоне таблица будет первой */
-.block-links { order: 2; }   /* список ссылок второй */
-
-/* на экранах ≥768px порядок обычный, как в JSX */
-@media (min-width: 768px) {
-    .adaptive { gap: 16px; }
-    .block-table, .block-links { order: 0; }
-}

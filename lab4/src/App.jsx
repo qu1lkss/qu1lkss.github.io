@@ -95,9 +95,8 @@ const languages = ['Pascal','C','C++','JavaScript','PHP','Python','Java','Haskel
 
 export default function App() {
     const [form] = Form.useForm()
-
+    
     const screens = Grid.useBreakpoint()
-    const isDesktop = screens.md // ++ добавлено: флаг ширины экрана
 
     const onFinish = (values) => console.log('Данные формы:', values)
 
@@ -114,22 +113,12 @@ export default function App() {
                                 <Col><h1 className="site-title">Мой сайт</h1></Col>
                             </Row>
                         </Col>
-
-                        {/* !! изменено: центровку меняем на левую на мобиле и правую на десктопе */}
-                        {/* было: style={{ textAlign: 'center', marginTop: screens.md ? 0 : 8 }} */}
-                        <Col
-                            flex="auto"
-                            style={{ textAlign: isDesktop ? 'right' : 'left', marginTop: isDesktop ? 0 : 8 }} // !! изменено
-                        >
+                        
+                        <Col flex="auto" style={{ textAlign: 'center', marginTop: screens.md ? 0 : 8 }}>
                             <Menu
-                                mode={isDesktop ? 'horizontal' : 'inline'} // !! изменено
+                                mode={screens.md ? 'horizontal' : 'inline'}
                                 selectable={false}
-                                // !! изменено: на мобиле меню занимает всю ширину, на десктопе остаётся компактным
-                                style={{
-                                    border: 'none',
-                                    background: 'transparent',
-                                    ...(isDesktop ? { display: 'inline-block' } : { width: '100%' }) // !! изменено
-                                }}
+                                style={{ border: 'none', background: 'transparent', display: 'inline-block' }}
                                 items={[
                                     { key: '1', label: <a href="#">Главная</a> },
                                     { key: '2', label: <a href="#">О сайте</a> },
@@ -143,28 +132,27 @@ export default function App() {
 
             {/* Контент */}
             <Content style={{ padding: '20px 12px', marginTop: 12 }}>
-                <div className="wrap adaptive">   {/* ++ добавили класс adaptive */}
-
-                    {/* Таблица идёт первой на мобильных */}
-                    <Card className="block-table" title="Таблица" bordered style={{ marginTop: 16 }}>
-                        <Table
-                            columns={tableColumns}
-                            dataSource={tableData}
-                            bordered
-                            pagination={false}
-                            aria-label="Пример таблицы"
-                            scroll={{ x: 'max-content' }}
-                        />
-                    </Card>
-
-                    {/* Список ссылок — вторым на мобильных */}
-                    <Card className="block-links" title="Список ссылок" bordered style={{ marginTop: 12 }}>
+                <div className="wrap">
+                    {/* Ссылки */}
+                    <Card title="Список ссылок" bordered style={{ marginTop: 12 }}>
                         <List
                             dataSource={linksData}
                             renderItem={(it) => <List.Item key={it.id}>{it.node}</List.Item>}
                             bordered
                         />
                     </Card>
+
+                    {/* Таблица */}
+                    <Card title="Таблица" bordered style={{ marginTop: 16 }}>
+                        <Table
+                            columns={tableColumns}
+                            dataSource={tableData}
+                            bordered
+                            pagination={false}
+                            aria-label="Пример таблицы"
+                        />
+                    </Card>
+
                     {/* Форма */}
                     <Card title="Форма" bordered style={{ marginTop: 16 }} id="form">
                         <Form

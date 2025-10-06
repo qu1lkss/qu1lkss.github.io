@@ -54,3 +54,26 @@
 @media (min-width: 768px) {
     .block-form { order: 0; } /* на десктопе вернём обычный порядок */
 }
+@media (max-width: 767px) {
+    /* Шапка */
+    .site-header .wrap { display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
+    .site-header .ant-menu { width:100% !important; text-align:left !important; }
+    .logo { width:56px !important; height:56px !important; }
+    .site-title { font-size:20px !important; }
+
+    /* Картинки */
+    .banner, .map-img, .ant-card img { max-width:100% !important; height:auto !important; display:block; }
+
+    /* Таблица: горизонтальный скролл внутри */
+    .ant-table-wrapper { overflow-x:auto; }
+    .ant-table-wrapper table { width:max-content; }
+
+    .adaptive { display:flex; flex-direction:column; gap:12px; }
+    .adaptive .block-table { order:1; }  /* таблица первой */
+    .adaptive .block-links { order:2; }  /* ссылки второй */
+
+    /* Fallback: если классов нет — переставим 1-ю и 2-ю карточки местами */
+    .wrap { display:flex; flex-direction:column; }
+    .wrap > .ant-card:nth-of-type(1) { order:2; } /* «Список ссылок» вниз */
+    .wrap > .ant-card:nth-of-type(2) { order:1; } /* «Таблица» вверх */
+}

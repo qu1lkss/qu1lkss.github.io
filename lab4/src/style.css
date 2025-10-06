@@ -46,7 +46,7 @@
 @media (min-width: 768px) {
     /* Обычный поток, порядок как в JSX */
     .adaptive { display: block; }
-    .block-table, .block-links, .block-form { order: 0; }
+    .block-links, .block-table, .block-form { order: 0; }
 
     /* Меню не растягиваем на всю ширину */
     .site-header .ant-menu { width: auto !important; }

@@ -105,51 +105,50 @@ export default function App() {
             {/* === ШАПКА + МЕНЮ === */}
             <Header className="site-header" style={{ background: '#f5f5f5', padding: '8px 0' }}>
                 <div className="wrap">
-                    <Row align="middle" justify="space-between" gutter={16} wrap>
-                        {/* Логотип + название слева */}
-                        <Col flex="none">
-                            <Row align="middle" gutter={12} wrap={false}>
-                                <Col><img className="logo" src="img/image.png" alt="Логотип" /></Col>
-                                <Col><h1 className="site-title">Мой сайт</h1></Col>
-                            </Row>
-                        </Col>
-                        
-                        <Col flex="auto" style={{ textAlign: 'center', marginTop: screens.md ? 0 : 8 }}>
-                            <Menu
-                                mode={screens.md ? 'horizontal' : 'inline'}
-                                selectable={false}
-                                style={{ border: 'none', background: 'transparent', display: 'inline-block' }}
-                                items={[
-                                    { key: '1', label: <a href="#">Главная</a> },
-                                    { key: '2', label: <a href="#">О сайте</a> },
-                                    { key: '3', label: <a href="#">Контакты</a> },
-                                ]}
-                            />
-                        </Col>
+                    {/* строка с логотипом и названием */}
+                    <Row align="middle" gutter={12} wrap={false}>
+                        <Col><img className="logo" src="img/image.png" alt="Логотип" /></Col>
+                        <Col><h1 className="site-title" style={{ margin: 0 }}>Мой сайт</h1></Col>
                     </Row>
+
+                    {/* меню: на десктопе — горизонтально и справа; на мобиле станет вертикальным (из-за CSS выше) */}
+                    <div style={{ width: '100%', textAlign: Grid.useBreakpoint().md ? 'right' : 'left', marginTop: 8 }}>
+                        <Menu
+                            mode={Grid.useBreakpoint().md ? 'horizontal' : 'inline'}
+                            selectable={false}
+                            style={{ border: 'none', background: 'transparent', display: 'inline-block', width: Grid.useBreakpoint().md ? 'auto' : '100%' }}
+                            items={[
+                                { key: '1', label: <a href="#">Главная</a> },
+                                { key: '2', label: <a href="#">О сайте</a> },
+                                { key: '3', label: <a href="#">Контакты</a> },
+                            ]}
+                        />
+                    </div>
                 </div>
             </Header>
 
             {/* Контент */}
             <Content style={{ padding: '20px 12px', marginTop: 12 }}>
-                <div className="wrap">
-                    {/* Ссылки */}
-                    <Card title="Список ссылок" bordered style={{ marginTop: 12 }}>
-                        <List
-                            dataSource={linksData}
-                            renderItem={(it) => <List.Item key={it.id}>{it.node}</List.Item>}
-                            bordered
-                        />
-                    </Card>
+                <div className="wrap adaptive"> {/* <-- добавили adaptive */}
 
-                    {/* Таблица */}
-                    <Card title="Таблица" bordered style={{ marginTop: 16 }}>
+                    {/* ТАБЛИЦА: будет первой на телефоне благодаря .block-table */}
+                    <Card className="block-table" title="Таблица" bordered style={{ marginTop: 16 }}>
                         <Table
                             columns={tableColumns}
                             dataSource={tableData}
                             bordered
                             pagination={false}
                             aria-label="Пример таблицы"
+                            scroll={{ x: 'max-content' }}   // чтобы на узких экранах был горизонтальный скролл
+                        />
+                    </Card>
+
+                    {/* ССЫЛКИ: будут второй на телефоне благодаря .block-links */}
+                    <Card className="block-links" title="Список ссылок" bordered style={{ marginTop: 12 }}>
+                        <List
+                            dataSource={linksData}
+                            renderItem={(it) => <List.Item key={it.id}>{it.node}</List.Item>}
+                            bordered
                         />
                     </Card>
 

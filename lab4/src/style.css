@@ -14,3 +14,31 @@
     .logo { width: 80px; height: 80px; }
     .site-title { font-size: 28px; }
 }
+/* ----- Мобилка: нормальная шапка  ----- */
+@media (max-width: 767px) {
+    /* Шапка в колонку: сначала логотип+заголовок, ниже вертикальное меню */
+    .site-header .wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+
+    /* Меню на телефоне — на всю ширину и слева */
+    .site-header .ant-menu { width: 100% !important; text-align: left !important; }
+
+    /* Логотип/заголовок компактнее */
+    .logo { width: 56px !important; height: 56px !important; }
+    .site-title { font-size: 20px !important; }
+
+    /* Картинки не вылезают за экран */
+    .banner, .map-img { max-width: 100% !important; height: auto !important; display: block; }
+}
+/* мобильный порядок: таблица раньше списка */
+.adaptive { display: flex; flex-direction: column; gap: 12px; }
+.block-table { order: 1; }   /* таблица – первая на мобилке */
+.block-links { order: 2; }   /* ссылки – вторая */
+
+/* на ≥768px вернуть обычный порядок как в JSX */
+@media (min-width: 768px) {
+    .adaptive { gap: 16px; }
+    .block-table, .block-links { order: 0; }
+}
+/* Таблица: скроллится по горизонтали внутри блока */
+.ant-table-wrapper { overflow-x: auto; }
+.ant-table-wrapper table { width: max-content; } /* чтобы появился скролл при узком экране */

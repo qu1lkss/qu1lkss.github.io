@@ -42,3 +42,15 @@
 /* Таблица: скроллится по горизонтали внутри блока */
 .ant-table-wrapper { overflow-x: auto; }
 .ant-table-wrapper table { width: max-content; } /* чтобы появился скролл при узком экране */
+/* чтобы меню на телефоне точно стало вертикальным и "ушло" под заголовок */
+@media (max-width: 767px) {
+    .site-header .ant-menu-overflow { justify-content: flex-start !important; }
+    .site-header .ant-menu-horizontal { display: block !important; } /* ломаем горизонтальный режим */
+}
+
+/* порядок секций на мобиле: Таблица → Ссылки → Форма */
+.block-form { order: 3; }
+
+@media (min-width: 768px) {
+    .block-form { order: 0; } /* на десктопе вернём обычный порядок */
+}

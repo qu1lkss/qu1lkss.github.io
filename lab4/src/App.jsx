@@ -153,7 +153,7 @@ export default function App() {
                     </Card>
 
                     {/* Форма */}
-                    <Card title="Форма" bordered style={{ marginTop: 16 }} id="form">
+                    <Card className="block-form" title="Форма" bordered style={{ marginTop: 16 }} id="form">
                         <Form
                             form={form}
                             name="userForm"

@@ -1,53 +1,148 @@
-/* База */
-#root { min-height: 100vh; }
-.wrap { max-width: 960px; margin: 0 auto; padding: 0 12px; }
-
-.logo { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; display: block; }
-.site-title { margin: 0; font-weight: 600; font-size: 22px; }
-
-.banner { width: 100%; max-width: 560px; height: auto; }
-.map-img { width: 460px; height: 220px; }
-
-.site-header { box-shadow: none; border-bottom: 0; }
-
-/* Десктопные увеличения */
-@media (min-width: 768px) {
-    .logo { width: 80px; height: 80px; }
-    .site-title { font-size: 28px; }
+/* ===================== БАЗОВЫЕ СТИЛИ ===================== */
+#root {
+    min-height: 100vh;
 }
 
-/* ===================== МОБИЛЬНАЯ ВЕРСИЯ (≤767px) ===================== */
-@media (max-width: 767px) {
-    /* Шапка: логотип+заголовок сверху, меню ниже и слева */
-    .site-header .wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-    .site-header .ant-menu { width: 100% !important; text-align: left !important; }
-    .site-header .ant-menu-overflow { justify-content: flex-start !important; }
-    .site-header .ant-menu-horizontal { display: block !important; }
-
-    /* Компактнее элементы шапки */
-    .logo { width: 56px !important; height: 56px !important; }
-    .site-title { font-size: 20px !important; }
-
-    /* Картинки не вылезают за экран */
-    .banner, .map-img, .ant-card img { max-width: 100% !important; height: auto !important; display: block; }
-
-    /* Порядок секций: Таблица → Ссылки → Форма */
-    .adaptive { display: flex; flex-direction: column; gap: 12px; }
-    .block-table { order: 1; }
-    .block-links { order: 2; }
-    .block-form  { order: 3; }
-
-    /* Таблица скроллится горизонтально внутри карточки */
-    .ant-table-wrapper { overflow-x: auto; }
-    .ant-table-wrapper table { width: max-content; }
+.wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 12px;
 }
 
-/* ===================== ДЕСКТОП (≥768px) ===================== */
-@media (min-width: 768px) {
-    /* Обычный поток, порядок как в JSX */
-    .adaptive { display: block; }
-    .block-links, .block-table, .block-form { order: 0; }
+/* --- Логотип и заголовок --- */
+.logo {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
 
-    /* Меню не растягиваем на всю ширину */
-    .site-header .ant-menu { width: auto !important; }
+.site-title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+/* --- Изображения --- */
+.banner {
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+}
+
+.map-img {
+    width: 460px;
+    height: 220px;
+}
+
+/* --- Шапка --- */
+.site-header {
+    box-shadow: none;
+    border-bottom: 0;
+}
+
+/* --- Таблица: горизонтальный скролл при узком экране --- */
+.ant-table-wrapper {
+    overflow-x: auto;
+}
+
+.ant-table-wrapper table {
+    width: max-content;
+}
+
+/* ===================== ДЕСКТОП (≥992px) ===================== */
+@media (min-width: 992px) {
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .site-title {
+        font-size: 28px;
+    }
+
+    /* Порядок секций: ссылки → таблица → форма */
+    .adaptive {
+        display: block;
+    }
+
+    .block-links {
+        order: 1;
+    }
+
+    .block-table {
+        order: 2;
+    }
+
+    .block-form {
+        order: 3;
+    }
+
+    /* Меню — горизонтально и не тянется */
+    .site-header .ant-menu {
+        width: auto !important;
+    }
+}
+
+/* ===================== МОБИЛЬНАЯ ВЕРСИЯ (≤991px) ===================== */
+@media (max-width: 991px) {
+    /* --- Шапка --- */
+    .site-header .wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .site-header .ant-menu {
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    .site-header .ant-menu-overflow {
+        justify-content: flex-start !important;
+    }
+
+    .site-header .ant-menu-horizontal {
+        display: block !important;
+    }
+
+    /* --- Логотип и заголовок компактнее --- */
+    .logo {
+        width: 56px !important;
+        height: 56px !important;
+    }
+
+    .site-title {
+        font-size: 20px !important;
+    }
+
+    /* --- Картинки адаптивно --- */
+    .banner,
+    .map-img,
+    .ant-card img {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+    }
+
+    /* --- Порядок секций: таблица → ссылки → форма --- */
+    .adaptive {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .block-table {
+        order: 1;
+    }
+
+    .block-links {
+        order: 2;
+    }
+
+    .block-form {
+        order: 3;
+    }
 }

@@ -143,28 +143,28 @@ export default function App() {
 
             {/* Контент */}
             <Content style={{ padding: '20px 12px', marginTop: 12 }}>
-                <div className="wrap">
-                    {/* Ссылки */}
-                    <Card title="Список ссылок" bordered style={{ marginTop: 12 }}>
-                        <List
-                            dataSource={linksData}
-                            renderItem={(it) => <List.Item key={it.id}>{it.node}</List.Item>}
-                            bordered
-                        />
-                    </Card>
+                <div className="wrap adaptive">   {/* ++ добавили класс adaptive */}
 
-                    {/* Таблица */}
-                    <Card title="Таблица" bordered style={{ marginTop: 16 }}>
+                    {/* Таблица идёт первой на мобильных */}
+                    <Card className="block-table" title="Таблица" bordered style={{ marginTop: 16 }}>
                         <Table
                             columns={tableColumns}
                             dataSource={tableData}
                             bordered
                             pagination={false}
                             aria-label="Пример таблицы"
-                            scroll={{ x: true }} // ++ добавлено: горизонтальный скролл на узких экранах
+                            scroll={{ x: 'max-content' }}
                         />
                     </Card>
 
+                    {/* Список ссылок — вторым на мобильных */}
+                    <Card className="block-links" title="Список ссылок" bordered style={{ marginTop: 12 }}>
+                        <List
+                            dataSource={linksData}
+                            renderItem={(it) => <List.Item key={it.id}>{it.node}</List.Item>}
+                            bordered
+                        />
+                    </Card>
                     {/* Форма */}
                     <Card title="Форма" bordered style={{ marginTop: 16 }} id="form">
                         <Form

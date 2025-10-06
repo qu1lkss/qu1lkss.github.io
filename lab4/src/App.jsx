@@ -129,9 +129,17 @@ export default function App() {
 
             {/* Контент */}
             <Content style={{ padding: '20px 12px', marginTop: 12 }}>
-                <div className="wrap adaptive"> {/* <-- добавили adaptive */}
+                <div className="wrap adaptive">
+                    {/* 1) Ссылки — первые на десктопе, вторые на мобиле */}
+                    <Card className="block-links" title="Список ссылок" bordered style={{ marginTop: 12 }}>
+                        <List
+                            dataSource={linksData}
+                            renderItem={(it) => <List.Item key={it.id}>{it.node}</List.Item>}
+                            bordered
+                        />
+                    </Card>
 
-                    {/* ТАБЛИЦА: будет первой на телефоне благодаря .block-table */}
+                    {/* 2) Таблица — вторая на десктопе, первая на мобиле */}
                     <Card className="block-table" title="Таблица" bordered style={{ marginTop: 16 }}>
                         <Table
                             columns={tableColumns}
@@ -139,16 +147,7 @@ export default function App() {
                             bordered
                             pagination={false}
                             aria-label="Пример таблицы"
-                            scroll={{ x: 'max-content' }}   // чтобы на узких экранах был горизонтальный скролл
-                        />
-                    </Card>
-
-                    {/* ССЫЛКИ: будут второй на телефоне благодаря .block-links */}
-                    <Card className="block-links" title="Список ссылок" bordered style={{ marginTop: 12 }}>
-                        <List
-                            dataSource={linksData}
-                            renderItem={(it) => <List.Item key={it.id}>{it.node}</List.Item>}
-                            bordered
+                            scroll={{ x: 'max-content' }}
                         />
                     </Card>
 

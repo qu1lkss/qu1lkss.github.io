@@ -105,18 +105,19 @@ export default function App() {
             {/* === ШАПКА + МЕНЮ === */}
             <Header className="site-header" style={{ background: '#f5f5f5', padding: '8px 0' }}>
                 <div className="wrap">
-                    {/* строка с логотипом и названием */}
-                    <Row align="middle" gutter={12} wrap={false}>
-                        <Col><img className="logo" src="img/image.png" alt="Логотип" /></Col>
-                        <Col><h1 className="site-title" style={{ margin: 0 }}>Мой сайт</h1></Col>
-                    </Row>
+                    <div className="head-row">{/* гибкая строка шапки */}
+                        {/* ЛОГО + НАЗВАНИЕ */}
+                        <div className="brand">
+                            <img className="logo" src="img/image.png" alt="Логотип" />
+                            <h1 className="site-title">Мой сайт</h1>
+                        </div>
 
-                    {/* меню: на десктопе — горизонтально и справа; на мобиле станет вертикальным (из-за CSS выше) */}
-                    <div style={{ width: '100%', textAlign: Grid.useBreakpoint().md ? 'right' : 'left', marginTop: 8 }}>
+                        {/* МЕНЮ — видно всегда */}
                         <Menu
+                            className="top-menu"
                             mode={Grid.useBreakpoint().md ? 'horizontal' : 'inline'}
                             selectable={false}
-                            style={{ border: 'none', background: 'transparent', display: 'inline-block', width: Grid.useBreakpoint().md ? 'auto' : '100%' }}
+                            style={{ background: 'transparent', border: 'none' }}
                             items={[
                                 { key: '1', label: <a href="#">Главная</a> },
                                 { key: '2', label: <a href="#">О сайте</a> },

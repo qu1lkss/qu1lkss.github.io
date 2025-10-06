@@ -146,3 +146,24 @@
         order: 3;
     }
 }
+/* ====== ЖЕЛЕЗНО ПОКАЗЫВАЕМ МЕНЮ В ШАПКЕ ====== */
+.head-row{
+    display:flex; align-items:center; gap:16px;
+}
+.brand{
+    display:flex; align-items:center; gap:12px; flex:0 0 auto;
+}
+.top-menu{
+    flex:1 1 auto; /* меню занимает остаток строки */
+}
+
+/* Десктоп: меню справа */
+@media (min-width: 992px){
+    .top-menu .ant-menu-overflow{ justify-content:flex-end !important; }
+}
+
+/* Мобилка: меню под заголовком и на всю ширину */
+@media (max-width: 991px){
+    .head-row{ flex-direction:column; align-items:flex-start; gap:8px; }
+    .top-menu{ width:100% !important; }
+}

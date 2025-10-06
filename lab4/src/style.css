@@ -146,8 +146,3 @@
         order: 3;
     }
 }
-/* Меню в шапке: справа на десктопе, слева и на всю ширину на мобиле */
-.site-header .menu-col .ant-menu { justify-content: flex-end; }
-@media (max-width: 991px) {
-    .site-header .menu-col .ant-menu { width: 100% !important; justify-content: flex-start !important; }
-}

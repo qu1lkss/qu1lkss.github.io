@@ -1,9 +1,10 @@
 import React from 'react'
 import {
-    Layout, Menu, Row, Col, List, Typography, Table,
+    Layout, Menu, List, Typography, Table,
     Form, Input, InputNumber, Radio, Select, Checkbox, Button,
     Grid, Card
 } from 'antd'
+import './style.css'
 
 const { Header, Content, Footer } = Layout
 const { Paragraph } = Typography
@@ -40,7 +41,8 @@ const tableColumns = [
 const linksData = [
     { id: 1, node: <a href="http://kubsu.ru/">Перейти на КубГУ (HTTP)</a> },
     { id: 2, node: <a href="https://kubsu.ru/">Перейти на КубГУ (HTTPS)</a> },
-    { id: 3, node: (
+    {
+        id: 3, node: (
             <a href="https://kubsu.ru/" title="Открыть kubsu.ru">
                 <img className="banner" src="img/banner.svg" alt="Баннер: Открыть kubsu.ru" />
             </a>
@@ -55,16 +57,18 @@ const linksData = [
     { id: 10, node: <a href="about/page3.html">Открыть about/page3.html (в папке about)</a> },
     { id: 11, node: <a href="../parent.html">Файл в папке уровнем выше (../parent.html)</a> },
     { id: 12, node: <a href="../../start.html">Файл на два уровня выше (../../start.html)</a> },
-    { id: 13, node: (
+    {
+        id: 13, node: (
             <Paragraph>
                 Полезная <a href="https://developer.mozilla.org/ru/" target="_blank" rel="noreferrer">документация MDN</a> по веб-разработке.
             </Paragraph>
         )
     },
     { id: 14, node: <a href="https://www.youtube.com/watch?v=MpomXaT8IwU" target="_blank" rel="noreferrer">IOS 26</a> },
-    { id: 15, node: (
+    {
+        id: 15, node: (
             <div>
-                Интерактивное изображение:<br/>
+                Интерактивное изображение:<br />
                 <img className="map-img" alt="Карта с зонами" useMap="#zones" src="img/map.svg" />
                 <map name="zones">
                     <area shape="rect" coords="10,10,210,110" href="https://www.example.com/rect" alt="Прямоугольная область — перейти" />
@@ -77,7 +81,8 @@ const linksData = [
     { id: 17, node: <a>ссылка без href</a> },
     { id: 18, node: <a href="https://www.example.com/partners" rel="nofollow">ссылка, по которой запрещен переход поисковикам</a> },
     { id: 19, node: <a href="https://www.example.com/private" rel="noindex">запрещенная для индексации поисковиками</a> },
-    { id: 20, node: (
+    {
+        id: 20, node: (
             <div>
                 Справочные материалы:
                 <ol>
@@ -95,44 +100,46 @@ const languages = ['Pascal','C','C++','JavaScript','PHP','Python','Java','Haskel
 
 export default function App() {
     const [form] = Form.useForm()
-    
     const screens = Grid.useBreakpoint()
+    const isDesktop = screens.lg // >= 992px
 
     const onFinish = (values) => console.log('Данные формы:', values)
 
     return (
         <Layout>
-            {/* === ШАПКА + МЕНЮ === */}
+            {/* === ШАПКА === */}
             <Header className="site-header" style={{ background: '#f5f5f5', padding: '8px 0' }}>
                 <div className="wrap">
-                    <div className="head-row">{/* гибкая строка шапки */}
+                    <div className="head-row" role="banner">
                         {/* ЛОГО + НАЗВАНИЕ */}
                         <div className="brand">
                             <img className="logo" src="img/image.png" alt="Логотип" />
                             <h1 className="site-title">Мой сайт</h1>
                         </div>
 
-                        {/* МЕНЮ — видно всегда */}
-                        <Menu
-                            className="top-menu"
-                            mode={Grid.useBreakpoint().md ? 'horizontal' : 'inline'}
-                            selectable={false}
-                            style={{ background: 'transparent', border: 'none' }}
-                            items={[
-                                { key: '1', label: <a href="#">Главная</a> },
-                                { key: '2', label: <a href="#">О сайте</a> },
-                                { key: '3', label: <a href="#">Контакты</a> },
-                            ]}
-                        />
+                        {/* МЕНЮ */}
+                        <nav aria-label="Главное меню" className="menu-holder">
+                            <Menu
+                                className="top-menu"
+                                mode={isDesktop ? 'horizontal' : 'inline'}
+                                selectable={false}
+                                style={{ background: 'transparent', border: 'none' }}
+                                items={[
+                                    { key: '1', label: <a href="#">Главная</a> },
+                                    { key: '2', label: <a href="#">О сайте</a> },
+                                    { key: '3', label: <a href="#">Контакты</a> },
+                                ]}
+                            />
+                        </nav>
                     </div>
                 </div>
             </Header>
 
-            {/* Контент */}
+            {/* === КОНТЕНТ === */}
             <Content style={{ padding: '20px 12px', marginTop: 12 }}>
                 <div className="wrap adaptive">
-                    {/* 1) Ссылки — первые на десктопе, вторые на мобиле */}
-                    <Card className="block-links" title="Список ссылок" bordered style={{ marginTop: 12 }}>
+                    {/* 1) Ссылки (десктоп — первые, мобилка — вторые) */}
+                    <Card className="block-links" title="Список ссылок" bordered style={{ marginTop: 12 }} id="links">
                         <List
                             dataSource={linksData}
                             renderItem={(it) => <List.Item key={it.id}>{it.node}</List.Item>}
@@ -140,8 +147,8 @@ export default function App() {
                         />
                     </Card>
 
-                    {/* 2) Таблица — вторая на десктопе, первая на мобиле */}
-                    <Card className="block-table" title="Таблица" bordered style={{ marginTop: 16 }}>
+                    {/* 2) Таблица (десктоп — вторая, мобилка — первая) */}
+                    <Card className="block-table" title="Таблица" bordered style={{ marginTop: 16 }} id="table">
                         <Table
                             columns={tableColumns}
                             dataSource={tableData}
@@ -152,7 +159,7 @@ export default function App() {
                         />
                     </Card>
 
-                    {/* Форма */}
+                    {/* 3) Форма */}
                     <Card className="block-form" title="Форма" bordered style={{ marginTop: 16 }} id="form">
                         <Form
                             form={form}
@@ -191,7 +198,7 @@ export default function App() {
                 </div>
             </Content>
 
-            {/* Подвал */}
+            {/* === ПОДВАЛ === */}
             <Footer style={{ background: '#d9d9d9', textAlign: 'center' }}>
                 © 2025 Леонов Константин
             </Footer>

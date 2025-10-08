@@ -108,7 +108,7 @@ export default function App() {
     return (
         <Layout>
             {/* === ШАПКА === */}
-            <Header className="site-header" style={{ background: '#f5f5f5', padding: '8px 0' }}>
+            <Header className="site-header" style={{ background: '#f5f5f5', padding: '8px 0', height: 'initial' }}>
                 <div className="wrap">
                     <div className="head-row" role="banner">
                         {/* ЛОГО + НАЗВАНИЕ */}

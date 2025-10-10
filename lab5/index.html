@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Калькулятор стоимости заказа</title>
+  <script defer src="js/calc.js"></script>
+</head>
+<body>
+<h1>Калькулятор стоимости заказа</h1>
+
+<form id="order-form">
+  <div>
+    <label for="qty">Количество</label>
+    <input type="text" id="qty" name="qty" autocomplete="off">
+    <div id="error" aria-live="polite"></div>
+  </div>
+
+  <div>
+    <label for="product">Товар</label>
+    <select id="product" name="product">
+      <option value="tea" data-price="150">Чай — 150 ₽</option>
+      <option value="coffee" data-price="250">Кофе — 250 ₽</option>
+      <option value="cookies" data-price="80">Печенье — 80 ₽</option>
+    </select>
+  </div>
+
+  <button type="submit" id="calc">Рассчитать</button>
+</form>
+
+<div id="result"></div>
+</body>
+</html>

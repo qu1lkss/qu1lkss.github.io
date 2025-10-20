@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ЛР №6 — Калькулятор стоимости услуги</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="calc.js"></script>
+</head>
+<body>
+<main class="container">
+  <h1>Калькулятор стоимости услуги</h1>
+
+  <form id="calc-form" autocomplete="off">
+    <fieldset class="block">
+      <legend>1) Количество</legend>
+      <label for="qty">Введите количество:</label>
+      <input id="qty" name="qty" type="number" min="1" step="1" value="1" inputmode="numeric" required>
+    </fieldset>
+
+    <fieldset class="block">
+      <legend>2) Тип услуги</legend>
+      <div class="hstack" id="type-group">
+        <label><input type="radio" name="serviceType" value="1" checked> Тип 1 — базовый</label>
+        <label><input type="radio" name="serviceType" value="2"> Тип 2 — с опциями</label>
+        <label><input type="radio" name="serviceType" value="3"> Тип 3 — со свойством</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="block" id="option-wrap" style="display:none;">
+      <legend>3) Опции (только для типа 2)</legend>
+      <label for="option-select">Опция:</label>
+      <select id="option-select" name="optionSelect"></select>
+    </fieldset>
+
+    <fieldset class="block" id="prop-wrap" style="display:none;">
+      <legend>4) Свойство (только для типа 3)</legend>
+      <label class="checkbox">
+        <input id="prop-fast" type="checkbox" name="propFast">
+        Ускоренное выполнение
+      </label>
+    </fieldset>
+  </form>
+
+  <section class="result">
+    <span class="result__label">Итого:</span>
+    <output id="total" class="result__value" for="qty serviceType optionSelect propFast">0 ₽</output>
+  </section>
+</main>
+</body>
+</html>

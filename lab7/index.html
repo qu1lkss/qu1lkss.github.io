@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+<header class="head"><h1>Галерея</h1></header>
+<main class="wrap">
+    <div class="slider">
+        <button id="prev" type="button" aria-label="Предыдущие">&#10094;</button>
+        <div class="viewport">
+            <div class="track" id="track"></div>
+        </div>
+        <button id="next" type="button" aria-label="Следующие">&#10095;</button>
+    </div>
+    <div class="pager"><span id="cur">1</span>/<span id="all">3</span></div>
+    <div class="dots" id="dots"></div>
+</main>
+</body>
+</html>

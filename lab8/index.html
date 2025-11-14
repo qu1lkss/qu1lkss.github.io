@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Контактная форма</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button id="openForm" class="btn">Открыть форму</button>
+
+<div id="modal" class="overlay" aria-hidden="true">
+  <div class="modal">
+    <button id="closeForm" class="close-btn">×</button>
+
+    <form id="contactForm" class="form" novalidate>
+      <div class="form-grid">
+        <label>
+          ФИО*
+          <input type="text" id="fullName" required>
+        </label>
+
+        <label>
+          Email*
+          <input type="email" id="email" required>
+        </label>
+
+        <label>
+          Телефон*
+          <input type="tel" id="phone" required>
+        </label>
+
+        <label>
+          Организация
+          <input type="text" id="org">
+        </label>
+      </div>
+
+      <label class="form-message">
+        Сообщение*
+        <textarea id="message" required></textarea>
+      </label>
+
+      <div class="checkbox">
+        <input type="checkbox" id="consent" required>
+        <label for="consent">Согласие на обработку данных*</label>
+      </div>
+
+      <button type="submit" class="btn submit-btn">Отправить</button>
+    </form>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
